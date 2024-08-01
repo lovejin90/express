@@ -2,20 +2,12 @@ const db = require('./db');
 
 function getAgents() {
     return new Promise((resolve, reject) => {
-        db.run;
-        db.all(
-            'SELECT name FROM sqlite_master WHERE type="table"', (err, rows) => {
-                resolve(rows);
-            }
-        );
-        /*
         db.all('SELECT * FROM hotdeal_alarm', (err, rows) => {
             if(err)
                 reject(err);
             else
                 resolve(rows);
         });
-         */
     });
 }
 
