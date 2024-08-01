@@ -2,7 +2,7 @@ const db = require('./db');
 
 function getAgents() {
     return new Promise((resolve, reject) => {
-        db.all('SELECT * FROM hotdeal_alarm', (err, rows) => {
+        db.all('SELECT * FROM hotdeal_alarm order by created_time', (err, rows) => {
             if(err)
                 reject(err);
             else
