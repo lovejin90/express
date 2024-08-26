@@ -4,7 +4,7 @@ const router = express.Router();
 const data = require("./data");
 const createError = require("http-errors");
 const { validationResult, check } = require("express-validator");
-const mysql = require("../../mysql");
+const mysql = require("../mysql");
 
 router.get("/getList", async function (req, res, next) {
   data.getMenuList((row) => {

@@ -8,7 +8,7 @@ const agents = require("./routes/agents");
 var app = express();
 
 const test = require("./routes/test/index");
-const menu = require("./routes/api/menu/index");
+const menu = require("./routes/menu/index");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/test", test);
-app.use("/api/menu", menu);
+app.use("/menu", menu);
 
 // GET ALL
 app.get("/agents", async function (req, res) {
