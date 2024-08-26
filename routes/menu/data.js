@@ -48,7 +48,7 @@ function insertMemu(name, active_yn, url, callback) {
 function updateMemu(id, name, active_yn, url, callback) {
   const conn = connect();
   conn.query(
-    `UPDATE menu SET name='${name}', active_yn='${active_yn}' , url='${url}', UPDATED_AT=NOW() WHERE ID=${id}`,
+    `UPDATE menu SET name='${name}', active_yn='${active_yn}' , url='${url}', UPDATED_AT=NOW() WHERE idx=${id}`,
     (err, result) => {
       if (err) throw err;
       callback();
@@ -58,7 +58,7 @@ function updateMemu(id, name, active_yn, url, callback) {
 
 function deleteMemu(id, callback) {
   const conn = connect();
-  conn.query(`DELETE FROM menu WHERE ID=${id}`, (err, result) => {
+  conn.query(`DELETE FROM menu WHERE idx=${id}`, (err, result) => {
     if (err) throw err;
     callback();
   });
@@ -67,7 +67,7 @@ function deleteMemu(id, callback) {
 function updateStatus(id, active_yn, callback) {
   const conn = connect();
   conn.query(
-      `UPDATE menu SET active_yn='${active_yn}', UPDATED_AT=NOW() WHERE ID=${id}`,
+      `UPDATE menu SET active_yn='${active_yn}', UPDATED_AT=NOW() WHERE idx=${id}`,
       (err, result) => {
         if (err) throw err;
         callback();
