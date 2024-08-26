@@ -61,5 +61,19 @@ router.post(
     });
   }
 );
+router.post(
+    "/updateStatus",
+    [check("content").isLength({ min: 1, max: 500 })],
+    (req, res) => {
+        let errs = validationResult(req);
 
+        let param = JSON.parse(JSON.stringify(req.body));
+        let id = param["id"];
+        let active_yn = param["active_yn"];
+
+        data.updateStatus(id, active_yn, (rlt) => {
+            res.send(rlt);
+        });
+    }
+);
 module.exports = router;

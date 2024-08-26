@@ -64,9 +64,22 @@ function deleteMemu(id, callback) {
   });
 }
 
+function updateStatus(id, active_yn, callback) {
+  const conn = connect();
+  conn.query(
+      `UPDATE menu SET active_yn='${active_yn}', UPDATED_AT=NOW() WHERE ID=${id}`,
+      (err, result) => {
+        if (err) throw err;
+        callback();
+      }
+  );
+}
+
+
 module.exports = {
   getMenuList,
   insertMemu,
   updateMemu,
   deleteMemu,
+  updateStatus,
 };
