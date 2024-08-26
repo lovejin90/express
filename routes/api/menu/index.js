@@ -4,9 +4,9 @@ const router = express.Router();
 const data = require("./data");
 const createError = require("http-errors");
 const { validationResult, check } = require("express-validator");
-const mysql = require("../mysql");
+const mysql = require("../../mysql");
 
-router.get("/api/getList", async function (req, res, next) {
+router.get("/getList", async function (req, res, next) {
   data.getMenuList((row) => {
     //유효성 검사에 적합하지 않으면 정보를 다시 조회 후, updateMemo 페이지를 다시 랜더링한다.
     res.send(row);
@@ -14,7 +14,7 @@ router.get("/api/getList", async function (req, res, next) {
 });
 
 router.post(
-  "/api/insertMemo",
+  "/insertMemo",
   [check("content").isLength({ min: 1, max: 500 })],
   (req, res) => {
     let errs = validationResult(req);
@@ -30,7 +30,7 @@ router.post(
   }
 );
 router.post(
-  "/api/updateMemo",
+  "/updateMemo",
   [check("content").isLength({ min: 1, max: 500 })],
   (req, res) => {
     let errs = validationResult(req);
@@ -48,7 +48,7 @@ router.post(
 );
 
 router.post(
-  "/api/deleteMemu",
+  "/deleteMemu",
   [check("content").isLength({ min: 1, max: 500 })],
   (req, res) => {
     let errs = validationResult(req);
@@ -62,7 +62,7 @@ router.post(
   }
 );
 router.post(
-  "/api/updateStatus",
+  "/updateStatus",
   [check("content").isLength({ min: 1, max: 500 })],
   (req, res) => {
     let errs = validationResult(req);

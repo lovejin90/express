@@ -1,5 +1,5 @@
 const mysql = require("mysql");
-const db = require("../db");
+const db = require("../../db");
 require("dotenv").config();
 
 const pool = mysql.createPool({
@@ -67,14 +67,13 @@ function deleteMemu(id, callback) {
 function updateStatus(id, active_yn, callback) {
   const conn = connect();
   conn.query(
-      `UPDATE menu SET active_yn='${active_yn}' WHERE idx=${id}`,
-      (err, result) => {
-        if (err) throw err;
-        callback();
-      }
+    `UPDATE menu SET active_yn='${active_yn}' WHERE idx=${id}`,
+    (err, result) => {
+      if (err) throw err;
+      callback();
+    }
   );
 }
-
 
 module.exports = {
   getMenuList,
