@@ -65,10 +65,10 @@ function deleteCategory(id, callback) {
   });
 }
 
-function updateCategoryStatus(id, active_yn, callback) {
+function updateCategoryStatus(id, use_yn, callback) {
   const conn = connect();
   conn.query(
-    `UPDATE category SET active_yn='${active_yn}' WHERE idx=${id}`,
+    `UPDATE category SET use_yn='${use_yn}' WHERE idx=${id}`,
     (err, result) => {
       if (err) throw err;
       callback();

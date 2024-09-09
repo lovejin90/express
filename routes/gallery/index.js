@@ -77,9 +77,9 @@ router.post(
 
     let param = JSON.parse(JSON.stringify(req.body));
     let id = param["id"];
-    let active_yn = param["active_yn"];
+    let use_yn = param["use_yn"];
 
-    data.updateCategoryStatus(id, active_yn, (rlt) => {
+    data.updateCategoryStatus(id, use_yn, (rlt) => {
       res.send(rlt);
     });
   }
@@ -144,9 +144,9 @@ router.post(
 
     let param = JSON.parse(JSON.stringify(req.body));
     let id = param["id"];
-    let active_yn = param["active_yn"];
+    let use_yn = param["use_yn"];
 
-    data.updateBoardStatus(id, active_yn, (rlt) => {
+    data.updateBoardStatus(id, use_yn, (rlt) => {
       res.send(rlt);
     });
   }
