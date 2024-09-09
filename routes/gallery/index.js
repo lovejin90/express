@@ -31,9 +31,6 @@ router.post("/insCategory", (req, res) => {
     use_yn: param["use_yn"],
     bg_img: param["bg_img"],
   };
-  console.log("data >> ", item);
-  return false;
-
   data.insertCategory(item, (rlt) => {
     res.send(rlt);
   });
@@ -50,8 +47,6 @@ router.post("/uptCategory", (req, res) => {
     use_yn: param["use_yn"],
     bg_img: param["bg_img"],
   };
-  console.log("data >> ", item);
-  return false;
 
   data.updateCategory(item, id, (rlt) => {
     res.send(rlt);
@@ -101,9 +96,6 @@ router.post("/insBoard", (req, res) => {
     use_yn: param["use_yn"],
   };
 
-  console.log("data >> ", item);
-  return false;
-
   data.insertBoard(item, (rlt) => {
     res.send(rlt);
   });
@@ -122,9 +114,6 @@ router.post("/uptBoard", (req, res) => {
     order: param["order"],
     use_yn: param["use_yn"],
   };
-
-  console.log("data >> ", item);
-  return false;
 
   data.updateBoard(item, id, (rlt) => {
     res.send(rlt);
