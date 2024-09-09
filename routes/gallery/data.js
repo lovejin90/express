@@ -24,9 +24,9 @@ function connect() {
 
   return conn;
 }
-const getList = async (table, page, limit, callback) => {
+const getList = async (data, callback) => {
   const conn = connect();
-  const sql = `SELECT * FROM ${table} where use_yn='Y' ORDER BY order DESC limit ${page},${limit}`;
+  const sql = `SELECT * FROM ${data.table} where use_yn='Y' ORDER BY order DESC limit ${data.page},${data.limit}`;
   console.log(sql);
   const list = [];
   let data = conn.query(sql, (error, rows, fields) => {

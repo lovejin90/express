@@ -9,11 +9,12 @@ const mysql = require("../mysql");
 router.post("/getList", async function (req, res, next) {
   let param = JSON.parse(JSON.stringify(req.body));
   if (param["table"] && param["page"] && param["limit"]) {
-    let table = param["table"];
-    let page = param["page"];
-    let limit = param["limit"];
-
-    data.getList((table, page, limit, row) => {
+    let item = {
+      table: param["table"],
+      page: param["page"],
+      limit: param["limit"],
+    };
+    data.getList((item, row) => {
       res.send(row);
     });
   } else {
