@@ -14,7 +14,7 @@ router.post("/getList", async function (req, res, next) {
       page: param["page"],
       limit: param["limit"],
     };
-    data.getList((item, row) => {
+    data.getList(item, (row) => {
       res.send(row);
     });
   } else {
