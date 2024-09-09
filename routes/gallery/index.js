@@ -6,7 +6,7 @@ const createError = require("http-errors");
 const { validationResult, check } = require("express-validator");
 const mysql = require("../mysql");
 
-router.get("/getList", async function (req, res, next) {
+router.post("/getList", async function (req, res, next) {
   let param = JSON.parse(JSON.stringify(req.body));
   if (param["table"] && param["page"] && param["limit"]) {
     let table = param["table"];
