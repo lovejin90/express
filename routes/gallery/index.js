@@ -79,7 +79,7 @@ router.post(
     let id = param["id"];
     let active_yn = param["active_yn"];
 
-    data.updateStatus(id, active_yn, (rlt) => {
+    data.updateCategoryStatus(id, active_yn, (rlt) => {
       res.send(rlt);
     });
   }
