@@ -27,7 +27,7 @@ function connect() {
 const getList = async (data, callback) => {
   const conn = connect();
   const sql = `SELECT * FROM ${data.table} where use_yn='Y' ORDER BY order DESC limit ${data.page},${data.limit}`;
-  console.log(sql);
+  console.log(data, sql);
   const list = [];
   let res = conn.query(sql, (error, rows, fields) => {
     if (error) return error;
