@@ -9,9 +9,10 @@ const mysql = require("../mysql");
 router.post("/getList", async function (req, res, next) {
   let param = JSON.parse(JSON.stringify(req.body));
   if (param["table"] && param["page"] && param["limit"]) {
+    let page = parseInt(param["page"]) - 1;
     let item = {
       table: param["table"],
-      page: param["page"],
+      page: page,
       limit: param["limit"],
     };
     data.getList(item, (row) => {
@@ -28,7 +29,7 @@ router.post("/insCategory", (req, res) => {
   let param = JSON.parse(JSON.stringify(req.body));
   let item = {
     title: param["title"],
-    order: param["order"],
+    sort: param["sort"],
     use_yn: param["use_yn"],
     bg_img: param["bg_img"],
   };
@@ -44,7 +45,7 @@ router.post("/uptCategory", (req, res) => {
   let id = param["id"];
   let item = {
     title: param["title"],
-    order: param["order"],
+    sort: param["sort"],
     use_yn: param["use_yn"],
     bg_img: param["bg_img"],
   };
@@ -93,7 +94,7 @@ router.post("/insBoard", (req, res) => {
     title: param["title"],
     contents: param["contents"],
     url: param["url"],
-    order: param["order"],
+    sort: param["sort"],
     use_yn: param["use_yn"],
   };
 
@@ -112,7 +113,7 @@ router.post("/uptBoard", (req, res) => {
     title: param["title"],
     contents: param["contents"],
     url: param["url"],
-    order: param["order"],
+    sort: param["sort"],
     use_yn: param["use_yn"],
   };
 

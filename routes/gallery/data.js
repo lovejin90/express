@@ -26,7 +26,7 @@ function connect() {
 }
 const getList = async (data, callback) => {
   const conn = connect();
-  const sql = `SELECT * FROM ${data.table} where use_yn='Y' ORDER BY order DESC limit ${data.page},${data.limit}`;
+  const sql = `SELECT * FROM ${data.table} where use_yn='Y' ORDER BY sort DESC limit ${data.page},${data.limit}`;
   console.log(data, sql);
   const list = [];
   let res = conn.query(sql, (error, rows, fields) => {
@@ -38,7 +38,7 @@ const getList = async (data, callback) => {
 function insertCategory(data, callback) {
   const conn = connect();
   conn.query(
-    `INSERT INTO category (title, regdate, order, use_yn, bg_img) VALUES ('${data.title}','NOW()','${data.order}','${data.use_yn}','${data.bg_img}' )`,
+    `INSERT INTO category (title, regdate, sort, use_yn, bg_img) VALUES ('${data.title}','NOW()','${data.sort}','${data.use_yn}','${data.bg_img}' )`,
     (err, result) => {
       if (err) throw err;
       callback();
@@ -49,7 +49,7 @@ function insertCategory(data, callback) {
 function updateCategory(data, id, callback) {
   const conn = connect();
   conn.query(
-    `UPDATE category SET title='${data.title}', order='${data.order}' , use_yn='${data.use_yn}' , bg_img= '${data.bg_img}'  WHERE idx=${id}`,
+    `UPDATE category SET title='${data.title}', sort='${data.sort}' , use_yn='${data.use_yn}' , bg_img= '${data.bg_img}'  WHERE idx=${id}`,
     (err, result) => {
       if (err) throw err;
       callback();
@@ -79,7 +79,7 @@ function updateCategoryStatus(id, active_yn, callback) {
 function insertBoard(data, callback) {
   const conn = connect();
   conn.query(
-    `INSERT INTO photo_board (category_idx, title, contents, url, regdate, order, use_yn) VALUES ('${data.category_idx}','${data.title}','${data.contents}','${data.url}','NOW()','${data.order}','${data.use_yn}' )`,
+    `INSERT INTO photo_board (category_idx, title, contents, url, regdate, sort, use_yn) VALUES ('${data.category_idx}','${data.title}','${data.contents}','${data.url}','NOW()','${data.sort}','${data.use_yn}' )`,
     (err, result) => {
       if (err) throw err;
       callback();
@@ -90,7 +90,7 @@ function insertBoard(data, callback) {
 function updateBoard(data, id, callback) {
   const conn = connect();
   conn.query(
-    `UPDATE photo_board SET category_idx='${data.category_idx}', title='${data.title}', contents='${data.contents}', url='${data.url}', order='${data.order}' , use_yn='${data.use_yn}' WHERE idx=${id}`,
+    `UPDATE photo_board SET category_idx='${data.category_idx}', title='${data.title}', contents='${data.contents}', url='${data.url}', sort='${data.sort}' , use_yn='${data.use_yn}' WHERE idx=${id}`,
     (err, result) => {
       if (err) throw err;
       callback();
