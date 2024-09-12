@@ -26,7 +26,7 @@ function connect() {
 }
 const getList = async (data, callback) => {
   const conn = connect();
-  const sql = `SELECT * FROM ${data.table} `;
+  let sql = `SELECT * FROM ${data.table} `;
   if (data.idx) {
     sql += ` where idx='${data.idx}'`;
   }
