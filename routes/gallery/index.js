@@ -14,6 +14,7 @@ router.post("/getList", async function (req, res, next) {
       table: param["table"],
       page: page,
       limit: param["limit"],
+      idx: param["idx"],
     };
     data.getList(item, (row) => {
       res.send(row);
