@@ -42,7 +42,7 @@ const getList = async (data, callback) => {
 function insertCategory(data, callback) {
   const conn = connect();
   conn.query(
-    `INSERT INTO category (title, regdate, sort, use_yn, bg_img) VALUES ('${data.title}','NOW()','${data.sort}','${data.use_yn}','${data.bg_img}' )`,
+    `INSERT INTO category (title, regdate, sort, use_yn, bg_img) VALUES ('${data.title}',NOW(),'${data.sort}','${data.use_yn}','${data.bg_img}' )`,
     (err, result) => {
       if (err) throw err;
       callback();
@@ -83,7 +83,7 @@ function updateCategoryStatus(id, use_yn, callback) {
 function insertBoard(data, callback) {
   const conn = connect();
   conn.query(
-    `INSERT INTO photo_board (category_idx, title, contents, url, regdate, sort, use_yn) VALUES ('${data.category_idx}','${data.title}','${data.contents}','${data.url}','NOW()','${data.sort}','${data.use_yn}' )`,
+    `INSERT INTO photo_board (category_idx, title, contents, url, regdate, sort, use_yn) VALUES ('${data.category_idx}','${data.title}','${data.contents}','${data.url}',NOW(),'${data.sort}','${data.use_yn}' )`,
     (err, result) => {
       if (err) throw err;
       callback();
